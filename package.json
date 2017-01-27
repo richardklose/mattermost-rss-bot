@@ -1,0 +1,29 @@
+{
+  "name": "mattermost-rss-bot",
+  "version": "0.0.1",
+  "description": "a nodejs based mattermost rss bot",
+  "main": "index.js",
+  "dependencies": {
+    "feedparser": "^2.1.0",
+    "request": "^2.79.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/richardklose/mattermost-rss-bot.git"
+  },
+  "keywords": [
+    "mattermost",
+    "rss",
+    "bot"
+  ],
+  "author": "RIchard Klose <richard.klose@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/richardklose/mattermost-rss-bot/issues"
+  },
+  "homepage": "https://github.com/richardklose/mattermost-rss-bot#readme"
+}

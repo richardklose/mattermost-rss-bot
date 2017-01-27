@@ -1,0 +1,13 @@
+{
+  "feeds":[
+    {
+      "url":"https://github.com/angular/angular/releases.atom",
+      "icon":"https://angular.io/resources/images/logos/angular2/angular.png",
+      "name":"Angular",
+      "channel":"testchannel-hubot",
+      "template":"New Release: [{{title}}](https://github.com{{link}})"
+    }
+  ],
+  "mattermost_hook":"https://<your-mattermost-server>/hooks/<your-hook>",
+  "interval":"300000"
+}
