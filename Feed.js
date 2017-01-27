@@ -9,6 +9,7 @@ let Feed = function(url, config ) {
         if(config.name)    { this.name = config.name; }
         if(config.channel) { this.channel = config.channel; }
         if(config.template){ this.template = config.template; }
+        if(config.last_refresh){ this.last_refresh = config.last_refresh; }
     }
 };
 
@@ -48,7 +49,6 @@ Feed.prototype.getNew = function(callback) {
         this.items.sort((a,b) => {
            return  a.date - b.date;
         });
-
         if (this.last_refresh) {
             // check which items are new since last refresh and output them all
             for (let item of this.items) {
