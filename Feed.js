@@ -1,8 +1,7 @@
 let FeedParser = require('feedparser');
 let request = require('request');
-
 let FeedItem = require('./FeedItem');
-
+let Config = require('./Config');
 let Feed = function(url, config ) {
     this.url = url;
     if (config) {
@@ -57,10 +56,14 @@ Feed.prototype.getNew = function(callback) {
                     callback(item);
                 }
             }
+            let last = this.items[this.items.length-1];
+            this.last_refresh = Date.now();
+            this.save();
         } else {
             // feed has never been loaded before, only output newest item
             let last = this.items[this.items.length-1];
-            this.last_refresh = last.date;
+            this.last_refresh = Date.now();
+            this.save();
             callback(last);
         }
     })
@@ -81,6 +84,16 @@ Feed.prototype.watch = function(interval, callback) {
     console.log("watching " + this.url);
     get();
     setInterval(get, parseInt(interval));
+};
+
+Feed.prototype.save = function () {
+    Config.update((config) => {
+        for (let fd of config.feeds) {
+            if(fd.url === this.url) {
+                fd.last_refresh = this.last_refresh;
+            }
+        }
+    });
 };
 
 
